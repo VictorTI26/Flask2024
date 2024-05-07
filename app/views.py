@@ -1,6 +1,6 @@
 from app import app, db
 from flask import render_template, url_for, request, redirect
-from app.forms import ContatoForm
+from app.forms import ContatoForm, Useform
 from app.models import Contato
 
 @app.route('/')
@@ -37,3 +37,8 @@ def contatoLista():
 def contatoDetail(id):
     obj=Contato.query.get(id)
     return render_template('contato_detail.html', obj=obj)
+
+@app.route('/cadastro')
+def cadastro():
+    form = Useform()
+    return render_template('cadastro.html', form=form)

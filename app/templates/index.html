@@ -8,7 +8,9 @@
     {% include 'nave.html' %}
     <div>
         <p>Bem vindos {{context.usuario}}</p>
-        <p>Idade: {{context.idade}}</p>
+        <p><b>Idade:</b>{{context.idade}}</p>
+        <a href="{{url_for('cadastro')}}" class="btn btn-primary">Faça o seu cadastro</a>
+        <hr>
         <img src="{{url_for('static', filename='img/senaiLogo.jpg')}}">
     </div>
 {% endblock %}
