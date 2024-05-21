@@ -1,7 +1,7 @@
 from app import app, db
 from flask import render_template, url_for, request, redirect
-from app.forms import ContatoForm, UserForm, LoginForm
-from app.models import Contato, User
+from app.forms import ContatoForm, UserForm, LoginForm, PostForm
+from app.models import Contato, User, Post
 from flask_login import login_user, logout_user, current_user
 
 
@@ -58,3 +58,17 @@ def contatoLista():
 def contatoDetail(id):
     obj = Contato.query.get(id)
     return render_template('contato_detail.html', obj=obj)
+
+@app.route('/post/novo', methods=['GET', 'POST'])
+def PostNovo():
+    form = PostForm()
+    if form.validate_on_submit():
+        form.save(current_user.id)
+        return redirect(url_for('homepage'))
+    return render_template('post_novo.html', form=form)
+
+@app.route('/post/lista')
+def PostLista():
+    posts = Post.query.all()
+    print(current_user.posts)
+    return render_template('post_lista.html', posts=posts)
