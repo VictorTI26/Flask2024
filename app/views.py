@@ -72,3 +72,8 @@ def PostLista():
     posts = Post.query.all()
     print(current_user.posts)
     return render_template('post_lista.html', posts=posts)
+
+@app.route('/post/<int:id>')
+def PostComentarios(id):
+    post = Post.query.get(id)
+    return render_template('post.html', post=post)
