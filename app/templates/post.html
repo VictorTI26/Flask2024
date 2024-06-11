@@ -25,7 +25,8 @@
                 </form>
             </div>
             <hr>
-            <div class="col-12">
+            <div class="col-12 mt-4 border rounded shadow p-3">
+                <h3>Comentários</h3>
                 {% for c in post.comentarios %}
                 <p>
                     <b>Usuario: </b>{{c.user.nome}} {{c.user.sobrenome}}<br>
